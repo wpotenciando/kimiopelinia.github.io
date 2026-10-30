@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Kimi Aiko Opelinia: virtual assistant, customer service representative and ESL online tutor.">
+<title>Kimi Aiko Opelinia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@300;400&display=swap">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  /* Layout concept: quiet, minimal editorial page. One moment of drama (the large Didone name), everything else small,
+     light and spaced out. Hairlines and white space only. Sections ease in each time they scroll into view, up or down. */
+  :root {
+    --paper: #fcfcfb;
+    --ink: #111111;
+    --mute: #555553;
+    --line: #e4e4e1;
+    --soft: #f3f3f1;
+    --display: "Bodoni Moda", "Didot", "Bodoni 72", "Times New Roman", serif;
+    --body: "Jost", "Helvetica Neue", Arial, sans-serif;
+    --gutter-l: max(20px, env(safe-area-inset-left, 0px));
+    --gutter-r: max(20px, env(safe-area-inset-right, 0px));
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0e0e0e; --ink: #f2f2f0; --mute: #b0b0ad; --line: #262625; --soft: #171716;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0e0e0e; --ink: #f2f2f0; --mute: #b0b0ad; --line: #262625; --soft: #171716;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--body); font-size: 16px; font-weight: 400; line-height: 1.7;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    transition: background-color .5s ease, color .5s ease;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+    z-index: 30; background: var(--paper); transition: background-color .5s ease;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 1px solid currentColor; outline-offset: 5px; }
+
+  .wrap {
+    width: 100%; max-width: 1200px; margin-inline: auto;
+    padding-left: var(--gutter-l); padding-right: var(--gutter-r);
+  }
+  .eyebrow { font-size: 0.76rem; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 400; color: var(--mute); margin: 0; }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: var(--paper);
+    transition: background-color .5s ease;
+  }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; min-height: 64px; }
+  .brand { font-family: var(--display); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
+  .header-right { display: flex; align-items: center; gap: clamp(16px, 3vw, 36px); }
+  .nav { display: flex; gap: clamp(16px, 3.5vw, 36px); }
+  .nav a {
+    font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; padding: 6px 0; color: var(--mute);
+    background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat;
+    transition: background-size .4s ease, color .3s ease;
+  }
+  .nav a:hover, .nav a:focus-visible { background-size: 100% 1px; color: var(--ink); }
+  section[id] { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px)); }
+  .progress {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--ink);
+    transform-origin: left; transform: scaleX(var(--p, 0));
+  }
+  .progress-track { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); }
+
+  /* Theme switch: two labelled halves, the current one is filled. */
+  .theme {
+    display: inline-flex; padding: 3px; border: 1px solid var(--line); border-radius: 999px; gap: 2px; flex-shrink: 0;
+  }
+  .theme button {
+    font: inherit; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 400;
+    color: var(--mute); background: transparent; border: 0; border-radius: 999px; padding: 8px 14px; min-height: 34px; cursor: pointer;
+    transition: background-color .3s ease, color .3s ease;
+  }
+  .theme button:hover { color: var(--ink); }
+  .theme button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+  /* ---------- 1. Head ---------- */
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); align-items: center; gap: clamp(32px, 6vw, 96px); }
+  .hero-text { padding-block: clamp(40px, 7vw, 96px); min-width: 0; }
+  .hero-name {
+    font-family: var(--display); font-weight: 400; text-transform: uppercase;
+    font-size: clamp(2.8rem, 6vw, 5.6rem); line-height: 0.95; letter-spacing: -0.01em;
+    margin: clamp(18px, 2.4vw, 28px) 0 clamp(22px, 3vw, 36px); overflow-wrap: anywhere;
+  }
+  .hero-name span { display: block; }
+  .hero-bio { max-width: 28ch; margin: 0; font-family: var(--display); font-style: italic; font-size: clamp(1.2rem, 2vw, 1.55rem); line-height: 1.4; color: var(--mute); }
+
+  /* Slot: an empty box where a photo or work sample goes. Click to preview an image. */
+  .slot {
+    position: relative; display: grid; place-items: center; overflow: hidden; background: var(--soft);
+    text-align: center;
+  }
+  .slot:hover { background: color-mix(in srgb, var(--soft) 80%, var(--ink) 6%); }
+  .slot:focus-within { outline: 1px solid currentColor; outline-offset: 5px; }
+  .slot input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 3; }
+  .slot-hint { display: grid; gap: 12px; justify-items: center; padding: 20px; }
+  .slot-plus { width: 22px; height: 22px; position: relative; opacity: .45; transition: opacity .3s ease, transform .4s ease; }
+  .slot:hover .slot-plus { opacity: 1; transform: rotate(90deg); }
+  .slot-plus::before, .slot-plus::after { content: ""; position: absolute; background: var(--ink); left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .slot-plus::before { width: 100%; height: 1px; } .slot-plus::after { width: 1px; height: 100%; }
+  .slot-label { font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--mute); }
+  .slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
+  .slot.has-img .slot-hint { display: none; }
+  .portrait { aspect-ratio: 1 / 1; width: 100%; max-width: 100%; }
+
+  /* ---------- A glance of me ---------- */
+  .glance { padding-top: clamp(72px, 11vw, 160px); }
+  .glance .wrap { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+  .snap { aspect-ratio: 4 / 3; width: 100%; max-width: 100%; }
+  .glance .lead { max-width: 46ch; margin: 22px 0 0; font-size: 1.05rem; color: var(--mute); }
+  .facts { margin: clamp(28px, 4vw, 44px) 0 0; padding: 0; }
+  .facts > div { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 24px; flex-wrap: wrap; padding: 14px 0; border-top: 1px solid var(--line); min-width: 0; }
+  .facts > div:last-child { border-bottom: 1px solid var(--line); }
+  .facts dd { margin: 0; font-size: 1rem; text-align: right; }
+
+  /* ---------- 2. Body ---------- */
+  .about { padding-block: clamp(72px, 11vw, 160px); }
+  .about .wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); }
+  .section-title {
+    font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 4.4vw, 3.4rem); line-height: 1.05; letter-spacing: -0.01em;
+    margin: 16px 0 0; text-wrap: balance;
+  }
+  .section-title em { font-style: italic; }
+  .about-note { margin: 22px 0 0; max-width: 32ch; color: var(--mute); font-size: 1rem; }
+
+  .sub { margin: 0 0 6px; }
+  .exp { list-style: none; margin: 0; padding: 0; }
+  .exp li { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 24px; flex-wrap: wrap; padding: 24px 0 26px; border-top: 1px solid var(--line); min-width: 0; }
+  .exp li:last-child { border-bottom: 1px solid var(--line); }
+  .exp h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.2rem, 2.2vw, 1.65rem); margin: 0; line-height: 1.2; }
+  .exp time { font-size: 0.76rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); }
+  .exp p { flex-basis: 100%; margin: 8px 0 0; max-width: 52ch; color: var(--mute); font-size: 1rem; }
+
+  .skills-block { margin-top: clamp(40px, 5vw, 64px); }
+  .skills { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(20px, 4vw, 48px); }
+  .skills li { padding: 20px 0 22px; border-top: 1px solid var(--line); min-width: 0; }
+  .skills h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.1rem, 2vw, 1.45rem); margin: 0; line-height: 1.2; }
+  .skills p { margin: 6px 0 0; color: var(--mute); font-size: 0.96rem; line-height: 1.6; }
+
+  /* ---------- 3. 2nd body: work room ---------- */
+  .work { padding-bottom: clamp(72px, 11vw, 160px); }
+  .work-head { margin-bottom: clamp(28px, 4vw, 52px); }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.8vw, 24px); }
+  .work .slot { aspect-ratio: 4 / 3; }
+
+  /* ---------- 4. End ---------- */
+  .contact { padding-block: clamp(72px, 11vw, 160px) 32px; border-top: 1px solid var(--line); }
+  .contact-title { font-family: var(--display); font-weight: 400; font-size: clamp(2.4rem, 7vw, 6rem); line-height: 1; letter-spacing: -0.015em; margin: 18px 0 clamp(40px, 6vw, 72px); text-wrap: balance; }
+  .contact-title em { font-style: italic; }
+  .reach { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px clamp(24px, 5vw, 80px); margin: 0; }
+  .reach dt { margin-bottom: 8px; }
+  .reach dd { margin: 0; min-width: 0; }
+  .val { font-family: var(--display); font-size: clamp(1.1rem, 2.4vw, 1.7rem); line-height: 1.3; overflow-wrap: anywhere; user-select: all; }
+  .reach-actions { display: flex; gap: 6px 22px; flex-wrap: wrap; margin-top: 10px; }
+  .link {
+    font: inherit; font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); text-decoration: none;
+    background: none; border: 0; padding: 4px 0; cursor: pointer;
+    border-bottom: 1px solid var(--line); transition: color .3s ease, border-color .3s ease;
+  }
+  .link:hover, .link:focus-visible { color: var(--ink); border-color: var(--ink); }
+  .copied { margin: 20px 0 0; font-size: 0.82rem; letter-spacing: 0.12em; color: var(--mute); min-height: 1.4em; }
+  .foot { margin-top: clamp(40px, 6vw, 80px); display: flex; justify-content: space-between; gap: 6px 24px; flex-wrap: wrap; }
+
+  /* ---------- Scroll animation: eases in each time it enters view, going down or up.
+     Resting state keeps text legible (soft fade + small offset), so nothing is ever blank. ---------- */
+  .js .reveal {
+    opacity: 0; transform: translateY(22px);
+    transition: opacity 1.1s cubic-bezier(.22, 1, .36, 1), transform 1.1s cubic-bezier(.22, 1, .36, 1), background-color .4s ease;
+    transition-delay: calc(var(--i, 0) * 100ms);
+  }
+  .js .reveal.in { opacity: 1; transform: none; }
+  .js .slot.reveal { transform: translateY(22px) scale(.985); }
+  .js .slot.reveal.in { transform: none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+    .hero-text { padding-bottom: 0; }
+    .hero-name { font-size: min(14vw, 6rem); }
+    .about .wrap, .glance .wrap { grid-template-columns: minmax(0, 1fr); }
+    .snap { max-width: 420px; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px) {
+    .site-header .wrap { flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
+    .header-right { display: contents; }
+    .nav { order: 3; width: 100%; justify-content: space-between; padding-top: 2px; }
+    .brand { font-size: 0.72rem; }
+    section[id] { scroll-margin-top: calc(104px + env(safe-area-inset-top, 0px)); }
+  }
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: minmax(0, 1fr); }
+    .skills { grid-template-columns: minmax(0, 1fr); }
+    .reach { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .reveal, .js .slot.reveal { opacity: 1; transform: none; transition: none; }
+    .slot-plus { transition: none; }
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#home">Kimi Aiko Opelinia</a>
+    <div class="header-right">
+      <nav class="nav" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#glance">Me</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="theme" role="group" aria-label="Color theme">
+        <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+  </div>
+  <div class="progress-track" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+
+<main>
+  <!-- 1. HEAD -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="hero-text">
+        <p class="eyebrow reveal" style="--i:0">Customer Service &amp; ESL Tutor</p>
+        <h1 class="hero-name reveal" style="--i:1"><span>Kimi Aiko</span><span>Opelinia</span></h1>
+        <p class="hero-bio reveal" style="--i:2">&ldquo;Behind every smooth day is a virtual assistant quietly taking care of the details.&rdquo;</p>
+      </div>
+      <div class="slot portrait reveal has-img" style="--i:2">
+        <img src="portrait.png" alt="Portrait of Kimi Aiko Opelinia">
+      </div>
+    </div>
+  </section>
+
+  <!-- A glance of me -->
+  <section class="glance" id="glance">
+    <div class="wrap">
+      <div class="slot snap reveal has-img">
+        <img src="snapshot.png" alt="Snapshot of Kimi Aiko Opelinia">
+      </div>
+      <div>
+        <p class="eyebrow reveal">A glance of me</p>
+        <h2 class="section-title reveal" style="--i:1">Hello, I&rsquo;m <em>Kimi.</em></h2>
+        <p class="lead reveal" style="--i:2">I&rsquo;m a customer service representative and an online ESL tutor. I like helping people feel understood, whether I&rsquo;m solving a concern in a support chat or guiding a student through English. I also edit videos and make simple designs.</p>
+        <dl class="facts">
+          <div class="reveal" style="--i:2"><dt class="eyebrow">Role</dt><dd>Customer Service Representative</dd></div>
+          <div class="reveal" style="--i:3"><dt class="eyebrow">Also</dt><dd>ESL Online Tutor</dd></div>
+          <div class="reveal" style="--i:4"><dt class="eyebrow">Creates with</dt><dd>CapCut, Canva</dd></div>
+          <div class="reveal" style="--i:5"><dt class="eyebrow">Find me on</dt><dd>JobStreet</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. BODY -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="eyebrow">About</p>
+        <h2 class="section-title">Experience <em>&amp;</em> skills</h2>
+        <p class="about-note">Over two years in each role, helping people in support conversations and in English lessons.</p>
+      </div>
+      <div>
+        <p class="eyebrow sub reveal">Experience</p>
+        <ul class="exp">
+          <li class="reveal" style="--i:1">
+            <h3>Customer Service Representative</h3><time>2 years 3 months</time>
+            <p>Answer customer questions, solve problems, and keep every conversation clear, patient and polite.</p>
+          </li>
+          <li class="reveal" style="--i:2">
+            <h3>ESL Online Tutor</h3><time>2 years</time>
+            <p>Teach English online, helping students speak, listen and write with more confidence.</p>
+          </li>
+        </ul>
+
+        <div class="skills-block">
+          <p class="eyebrow sub reveal">Skills</p>
+          <ul class="skills">
+            <li class="reveal" style="--i:0"><h3>Video editing</h3><p>Cutting and polishing clips into clean, easy-to-watch videos.</p></li>
+            <li class="reveal" style="--i:1"><h3>CapCut</h3><p>Quick edits, captions and transitions for short videos.</p></li>
+            <li class="reveal" style="--i:2"><h3>Canva</h3><p>Simple, tidy designs for posts, posters and presentations.</p></li>
+            <li class="reveal" style="--i:3"><h3>Excel</h3><p>Organizing data into clear tables, with basic formulas.</p></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 2ND BODY: WORK ROOM -->
+  <section class="work" id="work">
+    <div class="wrap">
+      <div class="work-head reveal">
+        <p class="eyebrow">Work Room</p>
+        <h2 class="section-title">Selected <em>work</em></h2>
+      </div>
+      <!-- Each .slot is an empty box. To fill one permanently, replace its contents with <img src="file.jpg" alt="Project name"> -->
+      <div class="grid">
+        <label class="slot reveal" data-slot style="--i:0"><input type="file" accept="image/*" aria-label="Add work sample"><span class="slot-hint"><span class="slot-plus"></span><span class="slot-label">Coming soon</span></span></label>
+        <label class="slot reveal" data-slot style="--i:1"><input type="file" accept="image/*" aria-label="Add work sample"><span class="slot-hint"><span class="slot-plus"></span><span class="slot-label">Coming soon</span></span></label>
+        <label class="slot reveal" data-slot style="--i:2"><input type="file" accept="image/*" aria-label="Add work sample"><span class="slot-hint"><span class="slot-plus"></span><span class="slot-label">Coming soon</span></span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. END -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow reveal">Contact</p>
+      <h2 class="contact-title reveal" style="--i:1">Let&rsquo;s work <em>together.</em></h2>
+      <dl class="reach">
+        <div class="reveal" style="--i:1">
+          <dt class="eyebrow">Email</dt>
+          <dd>
+            <span class="val" id="email-val">kimiaikoh@gmail.com</span>
+            <div class="reach-actions">
+              <button class="link" type="button" data-copy="#email-val">Copy</button>
+            </div>
+          </dd>
+        </div>
+        <div class="reveal" style="--i:2">
+          <dt class="eyebrow">Phone</dt>
+          <dd>
+            <span class="val" id="phone-val">0909 468 2362</span>
+            <div class="reach-actions">
+              <button class="link" type="button" data-copy="#phone-val">Copy</button>
+              <a class="link" href="tel:+639094682362">Call</a>
+            </div>
+          </dd>
+        </div>
+      </dl>
+      <p class="copied" id="copied" role="status" aria-live="polite"></p>
+      <div class="foot eyebrow"><span>&copy; 2026 Kimi Aiko Opelinia</span><span>Also on JobStreet</span></div>
+    </div>
+  </section>
+</main>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+
+    // ----- Theme switch -----
+    var buttons = document.querySelectorAll('[data-theme-set]');
+    var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    function current() {
+      var t = root.getAttribute('data-theme');
+      if (t === 'dark' || t === 'light') return t;
+      return mq && mq.matches ? 'dark' : 'light';
+    }
+    function paint() {
+      var c = current();
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-set') === c)); });
+    }
+    try {
+      var saved = localStorage.getItem('kimi-theme');
+      if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+    } catch (e) {}
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var t = b.getAttribute('data-theme-set');
+        root.setAttribute('data-theme', t);
+        try { localStorage.setItem('kimi-theme', t); } catch (e) {}
+        paint();
+      });
+    });
+    if (mq && mq.addEventListener) mq.addEventListener('change', paint);
+    paint();
+
+    // ----- Photo slots: preview a chosen image in the box (not saved) -----
+    document.querySelectorAll('[data-slot] input[type="file"]').forEach(function (input) {
+      input.addEventListener('change', function () {
+        var file = input.files && input.files[0];
+        if (!file || !/^image\//.test(file.type)) return;
+        var reader = new FileReader();
+        reader.onload = function () {
+          var slot = input.closest('[data-slot]');
+          var img = slot.querySelector('img') || document.createElement('img');
+          img.alt = '';
+          img.src = reader.result;
+          slot.appendChild(img);
+          slot.classList.add('has-img');
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    // ----- Scroll animation: replays every time an element enters or leaves view -----
+    var targets = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { e.target.classList.toggle('in', e.isIntersecting); });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      targets.forEach(function (t) { io.observe(t); });
+    } else {
+      targets.forEach(function (t) { t.classList.add('in'); });
+    }
+
+    // ----- Reading progress line in the header -----
+    var bar = document.getElementById('progress');
+    var ticking = false;
+    function update() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      bar.style.setProperty('--p', p.toFixed(4));
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+
+    // ----- Copy buttons with a text-selection fallback -----
+    var note = document.getElementById('copied');
+    var timer;
+    function say(msg) { note.textContent = msg; clearTimeout(timer); timer = setTimeout(function () { note.textContent = ''; }, 2400); }
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var el = document.querySelector(btn.getAttribute('data-copy'));
+        var text = el.textContent.replace(/\s+/g, el.id === 'phone-val' ? '' : ' ').trim();
+        function select() {
+          var r = document.createRange(); r.selectNodeContents(el);
+          var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+          say('Selected. Press copy on your device.');
+        }
+        try {
+          navigator.clipboard.writeText(text).then(function () { say('Copied ' + text); }, select);
+        } catch (err) { select(); }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
